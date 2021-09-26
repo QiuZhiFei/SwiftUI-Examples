@@ -9,25 +9,39 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
-    VStack(spacing: 11.0) {
-      Text("title")
-        .font(.title)
-      HStack {
-        Text("description")
-          .font(.headline)
-        Spacer()
-        Text("description")
-          .font(.headline)
+    VStack {
+      MapView()
+        .ignoresSafeArea(edges: .top)
+        .frame(height: 100)
+      
+      CircleView()
+        .offset(x: 0, y: -50)
+        .padding(.bottom, -50)
+      
+      VStack(spacing: 11.0) {
+        Text("title")
+          .font(.title)
+        HStack {
+          Text("description")
+            .font(.headline)
+          Spacer()
+          Text("description")
+            .font(.headline)
+        }
+        
+        Divider()
+        
       }
-      Image("idol_img_1")
-        .clipShape(Circle())
-        .overlay(Circle().stroke(Color.gray, lineWidth: 4))
+      
+      Spacer()
     }
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    Group {
+      ContentView().previewDevice("iPhone 11 Pro")
+    }
   }
 }
